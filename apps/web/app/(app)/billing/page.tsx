@@ -7,17 +7,19 @@ import { Badge } from '@/components/ui/badge'
 import { Check } from 'lucide-react'
 
 const FREE_FEATURES = [
-  'Basic features',
-  'Up to 100 items',
-  'Email support',
+  '1 board',
+  'Unlimited voters',
+  'Public voting page',
+  'Status updates',
 ]
 
 const PRO_FEATURES = [
-  'Everything in Free',
-  'Unlimited items',
+  'Unlimited boards',
+  'Unlimited voters',
+  'Custom branding',
+  'Changelog',
   'Priority support',
-  'Advanced analytics',
-  'API access',
+  'Export data',
 ]
 
 export default function BillingPage() {
@@ -64,7 +66,7 @@ export default function BillingPage() {
               Pro
               <Badge>Recommended</Badge>
             </CardTitle>
-            <p className="text-2xl font-heading font-bold">$__PRO_PRICE__<span className="text-base font-normal text-muted">/mo</span></p>
+            <p className="text-2xl font-heading font-bold">$19<span className="text-base font-normal text-muted">/mo</span></p>
           </CardHeader>
           <CardContent className="space-y-4">
             <ul className="space-y-2">

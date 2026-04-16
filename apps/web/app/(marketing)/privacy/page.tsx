@@ -2,7 +2,7 @@ export default function PrivacyPage() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-16 prose prose-zinc">
       <h1>Privacy Policy</h1>
-      <p><em>Last updated: __DATE__</em></p>
+      <p><em>Last updated: 2026-04-15</em></p>
 
       <h2>1. Information We Collect</h2>
       <p>We collect information you provide directly: email address and account preferences when you create an account. We also collect usage data automatically via cookies and server logs.</p>

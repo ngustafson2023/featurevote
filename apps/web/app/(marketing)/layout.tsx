@@ -40,7 +40,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
       <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm relative">
         <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
           <Link href="/" className="text-xl font-heading font-bold tracking-tight">
-            __APP_NAME__
+            featurevote
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             <Link href="/pricing" className="text-sm text-muted hover:text-foreground transition-colors">Pricing</Link>
@@ -55,8 +55,8 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
         <div className="max-w-6xl mx-auto px-6 py-12">
           <div className="grid gap-8 grid-cols-2 sm:grid-cols-4">
             <div>
-              <p className="font-heading font-bold mb-3">__APP_NAME__</p>
-              <p className="text-sm text-muted">__APP_TAGLINE__</p>
+              <p className="font-heading font-bold mb-3">featurevote</p>
+              <p className="text-sm text-muted">Feature voting your users will actually use.</p>
             </div>
             <div>
               <p className="text-sm font-medium mb-3">Product</p>
@@ -79,7 +79,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted">
-            &copy; {new Date().getFullYear()} __APP_NAME__. All rights reserved.
+            &copy; {new Date().getFullYear()} featurevote. All rights reserved.
           </div>
         </div>
       </footer>

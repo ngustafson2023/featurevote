@@ -3,12 +3,12 @@ import { GeistSans } from 'geist/font/sans'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: '__APP_TITLE__',
-  description: '__APP_DESCRIPTION__',
+  title: 'FeatureVote — Simple Feature Voting for SaaS Teams',
+  description: 'Collect and prioritize feature requests from your users. Simple, flat-priced alternative to Canny.',
   openGraph: {
-    title: '__APP_TITLE__',
-    description: '__APP_DESCRIPTION__',
-    url: '__APP_URL__',
+    title: 'FeatureVote — Simple Feature Voting for SaaS Teams',
+    description: 'Collect and prioritize feature requests from your users. Simple, flat-priced alternative to Canny.',
+    url: 'https://featurevote.bootstrapquant.com',
     type: 'website',
   },
 }

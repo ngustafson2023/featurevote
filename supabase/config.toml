@@ -1,6 +1,6 @@
 [auth]
-site_url = "https://__APP_NAME__.bootstrapquant.com"
-additional_redirect_urls = ["https://__APP_NAME__.bootstrapquant.com/**", "http://localhost:3000/**"]
+site_url = "https://featurevote.bootstrapquant.com"
+additional_redirect_urls = ["https://featurevote.bootstrapquant.com/**", "http://localhost:3000/**"]
 
 [auth.email]
 enable_signup = true

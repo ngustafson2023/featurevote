@@ -1,1 +1,1 @@
-export type { Plan, Profile } from './types'
+export type { Plan, Profile, PostStatus, Board, Post, Vote, ChangelogEntry } from './types'

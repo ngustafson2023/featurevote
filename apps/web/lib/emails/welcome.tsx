@@ -15,8 +15,8 @@ interface WelcomeEmailProps {
 }
 
 export default function WelcomeEmail({
-  appName = "__APP_NAME__",
-  dashboardUrl = "__APP_URL__/dashboard",
+  appName = "featurevote",
+  dashboardUrl = "https://featurevote.bootstrapquant.com/dashboard",
 }: WelcomeEmailProps) {
   return (
     <Html>

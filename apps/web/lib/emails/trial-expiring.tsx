@@ -16,9 +16,9 @@ interface TrialExpiringProps {
 }
 
 export default function TrialExpiring({
-  appName = "__APP_NAME__",
+  appName = "featurevote",
   daysLeft = 3,
-  billingUrl = "__APP_URL__/billing",
+  billingUrl = "https://featurevote.bootstrapquant.com/billing",
 }: TrialExpiringProps) {
   return (
     <Html>

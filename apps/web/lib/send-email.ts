@@ -5,8 +5,8 @@ import UpgradeConfirmation from "./emails/upgrade-confirmation";
 import TrialExpiring from "./emails/trial-expiring";
 import SubscriptionCancelled from "./emails/subscription-cancelled";
 
-const APP_NAME = "__APP_NAME__";
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "__APP_URL__";
+const APP_NAME = "featurevote";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://featurevote.bootstrapquant.com";
 
 export async function sendWelcomeEmail(to: string) {
   try {

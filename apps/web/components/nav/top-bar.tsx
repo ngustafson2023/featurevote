@@ -27,7 +27,7 @@ export function TopBar({ email }: TopBarProps) {
     <>
       <header className="flex items-center justify-between border-b border-border p-4 lg:hidden">
         <Link href="/dashboard" className="text-xl font-heading font-bold">
-          __APP_NAME__
+          featurevote
         </Link>
         <button onClick={() => setOpen(!open)}>
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

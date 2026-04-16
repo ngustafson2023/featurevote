@@ -16,9 +16,9 @@ interface SubscriptionCancelledProps {
 }
 
 export default function SubscriptionCancelled({
-  appName = "__APP_NAME__",
+  appName = "featurevote",
   endDate = "April 30, 2026",
-  billingUrl = "__APP_URL__/billing",
+  billingUrl = "https://featurevote.bootstrapquant.com/billing",
 }: SubscriptionCancelledProps) {
   return (
     <Html>

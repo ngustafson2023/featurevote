@@ -3,12 +3,13 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
-import { LayoutDashboard, Settings, CreditCard, LogOut } from 'lucide-react'
+import { LayoutDashboard, MessageSquarePlus, Megaphone, Settings, CreditCard, LogOut } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navItems = [
-  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  // Add app-specific nav items here
+  { href: '/dashboard', label: 'Boards', icon: LayoutDashboard },
+  { href: '/dashboard/new', label: 'New Board', icon: MessageSquarePlus },
+  { href: '/changelog', label: 'Changelog', icon: Megaphone },
   { href: '/settings', label: 'Settings', icon: Settings },
   { href: '/billing', label: 'Billing', icon: CreditCard },
 ]
@@ -32,7 +33,7 @@ export function Sidebar({ email }: SidebarProps) {
     <aside className="flex h-screen w-64 flex-col border-r border-border bg-background">
       <div className="p-6">
         <Link href="/dashboard" className="text-xl font-heading font-bold">
-          <span>__APP_NAME__</span><span className="text-amber-500 ml-0.5">.</span>
+          <span>featurevote</span><span className="text-amber-500 ml-0.5">.</span>
         </Link>
       </div>
 

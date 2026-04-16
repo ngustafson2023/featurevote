@@ -31,7 +31,7 @@ export default function PricingPage() {
             <CardTitle className="flex items-center gap-2">
               Pro <Badge>Popular</Badge>
             </CardTitle>
-            <p className="text-3xl font-heading font-bold">$__PRO_PRICE__<span className="text-base font-normal text-muted">/mo</span></p>
+            <p className="text-3xl font-heading font-bold">$19<span className="text-base font-normal text-muted">/mo</span></p>
           </CardHeader>
           <CardContent className="space-y-4">
             <ul className="space-y-2">

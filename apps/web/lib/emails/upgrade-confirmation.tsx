@@ -17,10 +17,10 @@ interface UpgradeConfirmationProps {
 }
 
 export default function UpgradeConfirmation({
-  appName = "__APP_NAME__",
+  appName = "featurevote",
   planName = "Pro",
-  amount = "$__PRO_PRICE__/mo",
-  dashboardUrl = "__APP_URL__/dashboard",
+  amount = "$19/mo",
+  dashboardUrl = "https://featurevote.bootstrapquant.com/dashboard",
 }: UpgradeConfirmationProps) {
   return (
     <Html>

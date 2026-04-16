@@ -2,10 +2,10 @@ export default function TermsPage() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-16 prose prose-zinc">
       <h1>Terms of Service</h1>
-      <p><em>Last updated: __DATE__</em></p>
+      <p><em>Last updated: 2026-04-15</em></p>
 
       <h2>1. Acceptance</h2>
-      <p>By using __APP_NAME__, you agree to these terms. If you don&apos;t agree, don&apos;t use the service.</p>
+      <p>By using featurevote, you agree to these terms. If you don&apos;t agree, don&apos;t use the service.</p>
 
       <h2>2. Account</h2>
       <p>You are responsible for maintaining the security of your account. You must be at least 18 years old.</p>

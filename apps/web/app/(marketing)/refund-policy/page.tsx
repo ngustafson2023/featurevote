@@ -2,7 +2,7 @@ export default function RefundPolicyPage() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-16 prose prose-zinc">
       <h1>Refund Policy</h1>
-      <p><em>Last updated: __DATE__</em></p>
+      <p><em>Last updated: 2026-04-15</em></p>
 
       <h2>Cancellation</h2>
       <p>You can cancel your subscription at any time from your billing settings. Cancellation takes effect at the end of the current billing period — you&apos;ll continue to have access until then.</p>

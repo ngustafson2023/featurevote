@@ -1,5 +1,5 @@
 {
-  "name": "@__APP_NAME__/web",
+  "name": "@featurevote/web",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@__APP_NAME__/core": "*",
+    "@featurevote/core": "*",
     "@react-email/components": "^1.0.12",
     "@react-email/render": "^2.0.6",
     "@stripe/react-stripe-js": "^3",
