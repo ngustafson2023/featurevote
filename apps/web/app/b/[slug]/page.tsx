@@ -132,7 +132,7 @@ export default function PublicBoardPage() {
           {board.description && <p className="text-muted mt-1">{board.description}</p>}
           <p className="text-xs text-muted mt-2">
             Powered by{' '}
-            <Link href="/" className="text-amber-500 hover:underline">
+            <Link href="/" className="text-primary hover:underline">
               FeatureVote
             </Link>
           </p>
@@ -162,8 +162,8 @@ export default function PublicBoardPage() {
                     onClick={() => handleVote(post.id)}
                     className={`flex flex-col items-center min-w-[48px] rounded-lg py-1 transition-colors ${
                       post.voted
-                        ? 'text-amber-500 bg-amber-500/10'
-                        : 'text-muted hover:text-amber-500 hover:bg-amber-500/5'
+                        ? 'text-primary bg-primary/10'
+                        : 'text-muted hover:text-primary hover:bg-primary/5'
                     }`}
                   >
                     <ChevronUp className="h-5 w-5" />

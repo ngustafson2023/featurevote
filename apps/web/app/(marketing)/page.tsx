@@ -28,22 +28,22 @@ export default function LandingPage() {
         <h2 className="text-3xl font-heading font-bold text-center mb-12">How it works</h2>
         <div className="grid gap-8 sm:grid-cols-3">
           <div className="text-center">
-            <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto mb-4">
-              <span className="text-amber-500 font-bold">1</span>
+            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+              <span className="text-primary font-bold">1</span>
             </div>
             <h3 className="font-heading font-bold mb-2">Create a Board</h3>
             <p className="text-sm text-muted">Set up a public feature board for your product in 30 seconds. Share the link with your users.</p>
           </div>
           <div className="text-center">
-            <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto mb-4">
-              <span className="text-amber-500 font-bold">2</span>
+            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+              <span className="text-primary font-bold">2</span>
             </div>
             <h3 className="font-heading font-bold mb-2">Collect Votes</h3>
             <p className="text-sm text-muted">Users suggest features and upvote what matters. The best ideas rise to the top automatically.</p>
           </div>
           <div className="text-center">
-            <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto mb-4">
-              <span className="text-amber-500 font-bold">3</span>
+            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+              <span className="text-primary font-bold">3</span>
             </div>
             <h3 className="font-heading font-bold mb-2">Ship & Update</h3>
             <p className="text-sm text-muted">Mark features as planned, in progress, or done. Keep your users in the loop with a changelog.</p>
@@ -66,9 +66,9 @@ export default function LandingPage() {
               </ul>
             </CardContent>
           </Card>
-          <Card className="border-amber-500">
+          <Card className="border-primary">
             <CardContent className="pt-6">
-              <p className="font-heading font-bold text-amber-500 mb-2">FeatureVote</p>
+              <p className="font-heading font-bold text-primary mb-2">FeatureVote</p>
               <ul className="space-y-2 text-sm text-muted">
                 <li>Flat pricing — unlimited users, always</li>
                 <li>$19/mo for everything</li>

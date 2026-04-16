@@ -57,7 +57,7 @@ export default function DashboardPage() {
         <div className="grid gap-4">
           {boards.map((board) => (
             <Link key={board.id} href={`/dashboard/${board.id}`}>
-              <Card className="hover:border-amber-500/50 transition-colors cursor-pointer">
+              <Card className="hover:border-primary/50 transition-colors cursor-pointer">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-lg">{board.name}</CardTitle>

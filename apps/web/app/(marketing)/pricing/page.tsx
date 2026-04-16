@@ -26,7 +26,7 @@ export default function PricingPage() {
           </CardContent>
         </Card>
 
-        <Card className="border-amber-500">
+        <Card className="border-primary">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               Pro <Badge>Popular</Badge>
@@ -35,11 +35,11 @@ export default function PricingPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <ul className="space-y-2">
-              <li className="flex items-center gap-2 text-sm"><Check className="h-4 w-4 text-amber-500" />Everything in Free</li>
-              <li className="flex items-center gap-2 text-sm"><Check className="h-4 w-4 text-amber-500" />Unlimited items</li>
-              <li className="flex items-center gap-2 text-sm"><Check className="h-4 w-4 text-amber-500" />Priority support</li>
-              <li className="flex items-center gap-2 text-sm"><Check className="h-4 w-4 text-amber-500" />Advanced analytics</li>
-              <li className="flex items-center gap-2 text-sm"><Check className="h-4 w-4 text-amber-500" />API access</li>
+              <li className="flex items-center gap-2 text-sm"><Check className="h-4 w-4 text-primary" />Everything in Free</li>
+              <li className="flex items-center gap-2 text-sm"><Check className="h-4 w-4 text-primary" />Unlimited items</li>
+              <li className="flex items-center gap-2 text-sm"><Check className="h-4 w-4 text-primary" />Priority support</li>
+              <li className="flex items-center gap-2 text-sm"><Check className="h-4 w-4 text-primary" />Advanced analytics</li>
+              <li className="flex items-center gap-2 text-sm"><Check className="h-4 w-4 text-primary" />API access</li>
             </ul>
             <Link href="/signup"><Button className="w-full">Start Free Trial</Button></Link>
           </CardContent>

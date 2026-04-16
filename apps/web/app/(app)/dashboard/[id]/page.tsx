@@ -112,7 +112,7 @@ export default function BoardDetailPage() {
             <Card key={post.id}>
               <CardContent className="pt-4 pb-4 flex items-center gap-4">
                 <div className="flex flex-col items-center min-w-[48px]">
-                  <ArrowUpCircle className="h-5 w-5 text-amber-500" />
+                  <ArrowUpCircle className="h-5 w-5 text-primary" />
                   <span className="text-sm font-bold">{post.vote_count}</span>
                 </div>
                 <div className="flex-1 min-w-0">
