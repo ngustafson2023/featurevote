@@ -16,6 +16,11 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY is not set')
+      return NextResponse.json({ error: 'Email service not configured' }, { status: 500 })
+    }
+    console.log('Sending welcome email to:', email, 'key prefix:', process.env.RESEND_API_KEY?.slice(0, 10))
     await getResend().emails.send({
       from: FROM,
       to: email,
@@ -50,9 +55,10 @@ export async function POST(request: NextRequest) {
 </body>
 </html>`,
     })
+    console.log('Welcome email sent successfully')
+    return NextResponse.json({ ok: true })
   } catch (err) {
     console.error('Welcome email failed:', err)
+    return NextResponse.json({ error: String(err) }, { status: 500 })
   }
-
-  return NextResponse.json({ ok: true })
 }
