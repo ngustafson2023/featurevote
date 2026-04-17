@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -11,6 +11,23 @@ import { Switch } from '@/components/ui/switch'
 
 export default function NewBoardPage() {
   const router = useRouter()
+  const [gateLoading, setGateLoading] = useState(true)
+
+  useEffect(() => {
+    Promise.all([
+      fetch('/api/profile').then((r) => r.json()),
+      fetch('/api/boards').then((r) => r.json()),
+    ]).then(([profile, boardsData]) => {
+      const plan = profile.plan || 'free'
+      const count = boardsData.boards?.length || 0
+      if (plan !== 'pro' && count >= 1) {
+        router.replace('/billing?reason=boards')
+      } else {
+        setGateLoading(false)
+      }
+    })
+  }, [router])
+
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [isPublic, setIsPublic] = useState(true)
@@ -42,6 +59,10 @@ export default function NewBoardPage() {
 
     const { board } = await res.json()
     router.push(`/dashboard/${board.id}`)
+  }
+
+  if (gateLoading) {
+    return <div className="max-w-lg mx-auto"><p className="text-muted">Loading...</p></div>
   }
 
   return (

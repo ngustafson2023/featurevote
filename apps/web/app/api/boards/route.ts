@@ -32,6 +32,26 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('plan')
+    .eq('id', user.id)
+    .single()
+  const plan = profile?.plan || 'free'
+
+  if (plan !== 'pro') {
+    const { count } = await supabase
+      .from('boards')
+      .select('*', { count: 'exact', head: true })
+      .eq('owner_id', user.id)
+    if ((count || 0) >= 1) {
+      return NextResponse.json(
+        { error: 'Free plan is limited to 1 board. Upgrade to Pro for unlimited boards.', code: 'LIMIT_BOARDS' },
+        { status: 403 }
+      )
+    }
+  }
+
   const { name, slug, description, is_public } = await request.json()
 
   if (!name || !slug) {

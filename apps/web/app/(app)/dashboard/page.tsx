@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { PlusCircle, ExternalLink, MessageSquare } from 'lucide-react'
+import { PlusCircle, ExternalLink, MessageSquare, Lock } from 'lucide-react'
 
 interface Board {
   id: string
@@ -20,26 +20,41 @@ interface Board {
 export default function DashboardPage() {
   const [boards, setBoards] = useState<Board[]>([])
   const [loading, setLoading] = useState(true)
+  const [plan, setPlan] = useState<string>('free')
 
   useEffect(() => {
-    fetch('/api/boards')
-      .then((r) => r.json())
-      .then((data) => {
-        setBoards(data.boards || [])
-        setLoading(false)
-      })
+    Promise.all([
+      fetch('/api/boards').then((r) => r.json()),
+      fetch('/api/profile').then((r) => r.json()),
+    ]).then(([boardsData, profileData]) => {
+      setBoards(boardsData.boards || [])
+      setPlan(profileData.plan || 'free')
+      setLoading(false)
+    })
   }, [])
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-heading font-bold">Your Boards</h1>
-        <Link href="/dashboard/new">
-          <Button>
-            <PlusCircle className="h-4 w-4 mr-2" />
-            New Board
-          </Button>
-        </Link>
+        {plan === 'free' && boards.length >= 1 ? (
+          <div className="flex items-center gap-3">
+            <span className="text-sm text-muted">Free plan: 1 board included.</span>
+            <Link href="/billing">
+              <Button size="sm" variant="outline">
+                <Lock className="h-4 w-4 mr-2" />
+                Upgrade for more boards
+              </Button>
+            </Link>
+          </div>
+        ) : (
+          <Link href="/dashboard/new">
+            <Button>
+              <PlusCircle className="h-4 w-4 mr-2" />
+              New Board
+            </Button>
+          </Link>
+        )}
       </div>
 
       {loading ? (

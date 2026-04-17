@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -23,6 +24,8 @@ const PRO_FEATURES = [
 ]
 
 export default function BillingPage() {
+  const searchParams = useSearchParams()
+  const reason = searchParams.get('reason')
   const [loading, setLoading] = useState(false)
 
   async function handlePortal() {
@@ -37,6 +40,12 @@ export default function BillingPage() {
 
   return (
     <div className="max-w-2xl mx-auto space-y-6">
+      {reason === 'boards' && (
+        <div className="rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+          You have reached the free plan limit of 1 board. Upgrade to Pro for unlimited boards.
+        </div>
+      )}
+
       <h1 className="text-3xl font-heading font-bold">Billing</h1>
 
       <div className="grid gap-6 sm:grid-cols-2">
