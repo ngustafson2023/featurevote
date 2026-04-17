@@ -7,55 +7,104 @@ function getResend() {
   return _resend
 }
 
-const FROM = 'FeatureVote <alerts@bootstrapquant.com>'
+const WELCOME_HTML = `<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#09090b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#09090b;">
+<tr><td align="center" style="padding:40px 20px;">
+<table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;">
+
+<!-- Logo bar -->
+<tr><td style="padding-bottom:32px;">
+  <span style="font-size:20px;font-weight:700;color:#ffffff;letter-spacing:-0.5px;">●&nbsp;<span style="color:#4f46e5">·</span></span>
+  <span style="font-size:20px;font-weight:700;color:#ffffff;">FeatureVote</span>
+</td></tr>
+
+<!-- Card -->
+<tr><td style="background:#18181b;border:1px solid #27272a;border-radius:12px;padding:40px;">
+  
+    <h1 style="font-size:26px;font-weight:700;color:#ffffff;margin:0 0 8px;">Welcome to FeatureVote.</h1>
+    <p style="font-size:16px;color:#a1a1aa;margin:0 0 28px;line-height:1.6;">Stop guessing what to build next. Let your users tell you.</p>
+
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr><td style="padding-bottom:16px;">
+        <table cellpadding="0" cellspacing="0"><tr>
+          <td style="width:36px;height:36px;background:#4f46e5;border-radius:50%;text-align:center;vertical-align:middle;">
+            <span style="font-size:14px;font-weight:700;color:#ffffff;">1</span>
+          </td>
+          <td style="padding-left:16px;">
+            <p style="font-size:15px;font-weight:600;color:#ffffff;margin:0;">Create a board</p>
+            <p style="font-size:14px;color:#71717a;margin:4px 0 0;">Name it after your product. Takes 30 seconds.</p>
+          </td>
+        </tr></table>
+      </td></tr>
+      <tr><td style="padding-bottom:16px;">
+        <table cellpadding="0" cellspacing="0"><tr>
+          <td style="width:36px;height:36px;background:#4f46e5;border-radius:50%;text-align:center;vertical-align:middle;">
+            <span style="font-size:14px;font-weight:700;color:#ffffff;">2</span>
+          </td>
+          <td style="padding-left:16px;">
+            <p style="font-size:15px;font-weight:600;color:#ffffff;margin:0;">Share the link</p>
+            <p style="font-size:14px;color:#71717a;margin:4px 0 0;">Drop it in your app, docs, or Discord. Users vote — no account required.</p>
+          </td>
+        </tr></table>
+      </td></tr>
+      <tr><td style="padding-bottom:16px;">
+        <table cellpadding="0" cellspacing="0"><tr>
+          <td style="width:36px;height:36px;background:#4f46e5;border-radius:50%;text-align:center;vertical-align:middle;">
+            <span style="font-size:14px;font-weight:700;color:#ffffff;">3</span>
+          </td>
+          <td style="padding-left:16px;">
+            <p style="font-size:15px;font-weight:600;color:#ffffff;margin:0;">See what rises to the top</p>
+            <p style="font-size:14px;color:#71717a;margin:4px 0 0;">Best ideas surface automatically. No more spreadsheets.</p>
+          </td>
+        </tr></table>
+      </td></tr>
+      <tr><td style="padding-bottom:28px;">
+        <table cellpadding="0" cellspacing="0"><tr>
+          <td style="width:36px;height:36px;background:#4f46e5;border-radius:50%;text-align:center;vertical-align:middle;">
+            <span style="font-size:14px;font-weight:700;color:#ffffff;">4</span>
+          </td>
+          <td style="padding-left:16px;">
+            <p style="font-size:15px;font-weight:600;color:#ffffff;margin:0;">Ship it and mark it done</p>
+            <p style="font-size:14px;color:#71717a;margin:4px 0 0;">Voters get notified automatically when their request ships.</p>
+          </td>
+        </tr></table>
+      </td></tr>
+    </table>
+
+    <div style="background:#0c0c0c;border:1px solid #27272a;border-radius:8px;padding:16px;margin-bottom:28px;">
+      <p style="font-size:13px;color:#71717a;margin:0;">💡 <strong style="color:#a1a1aa;">No friction for voters:</strong> Your users don't need an account to vote. Just a link. This gets you 3–5× more responses.</p>
+    </div>
+
+    <a href="https://featurevote.bootstrapquant.com/dashboard/new" style="display:inline-block;background:#4f46e5;color:#ffffff;padding:13px 28px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;letter-spacing:0.1px;">Create Your First Board →</a>
+  
+</td></tr>
+
+<!-- Footer -->
+<tr><td style="padding-top:24px;text-align:center;">
+  <p style="font-size:12px;color:#52525b;margin:0;">FeatureVote · <a href="mailto:support@bootstrapquant.com" style="color:#52525b;">support@bootstrapquant.com</a></p>
+</td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>`
 
 export async function POST(request: NextRequest) {
   const { email } = await request.json()
   if (!email) {
     return NextResponse.json({ error: 'Email required' }, { status: 400 })
   }
-
   try {
-    if (!process.env.RESEND_API_KEY) {
-      console.error('RESEND_API_KEY is not set')
-      return NextResponse.json({ error: 'Email service not configured' }, { status: 500 })
-    }
-    console.log('Sending welcome email to:', email, 'key prefix:', process.env.RESEND_API_KEY?.slice(0, 10))
     await getResend().emails.send({
-      from: FROM,
+      from: 'FeatureVote <alerts@bootstrapquant.com>',
       to: email,
       subject: 'Welcome to FeatureVote — create your first board',
-      html: `
-<!DOCTYPE html>
-<html>
-<body style="font-family:system-ui,sans-serif;background:#fafafa;margin:0;padding:0;">
-<div style="max-width:560px;margin:0 auto;padding:40px 20px;">
-  <h1 style="font-size:24px;font-weight:700;color:#18181b;margin-bottom:16px;">Welcome to FeatureVote!</h1>
-  <p style="font-size:16px;line-height:24px;color:#3f3f46;margin-bottom:16px;">
-    You're ready to start collecting feature requests from your users. Here's how it works:
-  </p>
-  <ol style="font-size:16px;line-height:28px;color:#3f3f46;margin-bottom:24px;padding-left:20px;">
-    <li>Create a board for your product</li>
-    <li>Share the link with your users</li>
-    <li>Watch votes come in — the best ideas rise to the top</li>
-    <li>Ship what matters, mark it done</li>
-  </ol>
-  <p style="font-size:16px;line-height:24px;color:#3f3f46;margin-bottom:24px;">
-    <strong>No account required for your users to vote.</strong> Just share the link — zero friction.
-  </p>
-  <div style="text-align:center;margin:32px 0;">
-    <a href="https://featurevote.bootstrapquant.com/dashboard/new"
-       style="background:#4f46e5;color:#fff;padding:12px 24px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none;display:inline-block;">
-      Create Your First Board →
-    </a>
-  </div>
-  <hr style="border:none;border-top:1px solid #e4e4e7;margin:24px 0;" />
-  <p style="font-size:12px;color:#a1a1aa;">FeatureVote · support@bootstrapquant.com</p>
-</div>
-</body>
-</html>`,
+      html: WELCOME_HTML,
     })
-    console.log('Welcome email sent successfully')
     return NextResponse.json({ ok: true })
   } catch (err) {
     console.error('Welcome email failed:', err)
