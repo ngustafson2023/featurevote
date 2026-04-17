@@ -9,44 +9,33 @@ import {
   Hr,
 } from "@react-email/components";
 
-export default function WelcomeEmail() {
+export default function ProUpgradeEmail() {
   return (
     <Html>
       <Head />
       <Body style={body}>
         <Container style={container}>
-          <Text style={heading}>Welcome to FeatureVote</Text>
-          <Text style={text}>
-            You&apos;re ready to start collecting feature requests from your
-            users. Here&apos;s how it works:
-          </Text>
-          <Section>
-            <Text style={step}>
-              <strong>1.</strong> Create a board for your product
-            </Text>
-            <Text style={step}>
-              <strong>2.</strong> Share the link with your users
-            </Text>
-            <Text style={step}>
-              <strong>3.</strong> Watch votes come in — the best ideas rise to
-              the top
-            </Text>
-            <Text style={step}>
-              <strong>4.</strong> Ship what matters
-            </Text>
+          <Text style={heading}>You&apos;re now on FeatureVote Pro 🎉</Text>
+          <Text style={text}>Thanks for upgrading. Here&apos;s what you&apos;ve unlocked:</Text>
+          <Section style={featureBox}>
+            <Text style={feature}>✓ Unlimited boards</Text>
+            <Text style={feature}>✓ Priority support</Text>
           </Section>
-          <Text style={text}>
-            Your users can vote without creating an account — just an email.
-            Zero friction.
-          </Text>
           <Section style={buttonContainer}>
             <Button
               style={button}
               href="https://featurevote.bootstrapquant.com/dashboard/new"
             >
-              Create Your First Board
+              Create a New Board
             </Button>
           </Section>
+          <Text style={text}>
+            Manage your subscription anytime from the{" "}
+            <a href="https://featurevote.bootstrapquant.com/billing" style={link}>
+              billing portal
+            </a>
+            .
+          </Text>
           <Hr style={hr} />
           <Text style={footer}>
             FeatureVote · support@bootstrapquant.com
@@ -78,11 +67,18 @@ const text = {
   color: "#3f3f46",
   marginBottom: "8px",
 };
-const step = {
+const featureBox = {
+  backgroundColor: "#f4f4f5",
+  borderRadius: "8px",
+  padding: "16px",
+  marginBottom: "16px",
+};
+const feature = {
   fontSize: "16px",
   lineHeight: "28px",
-  color: "#3f3f46",
-  marginBottom: "4px",
+  color: "#18181b",
+  fontWeight: "600",
+  marginBottom: "0",
 };
 const buttonContainer = {
   textAlign: "center" as const,
@@ -98,5 +94,6 @@ const button = {
   fontSize: "14px",
   textDecoration: "none",
 };
+const link = { color: "#4f46e5", textDecoration: "underline" };
 const hr = { borderColor: "#e4e4e7", margin: "24px 0" };
 const footer = { fontSize: "12px", color: "#a1a1aa" };

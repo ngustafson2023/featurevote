@@ -9,4 +9,4 @@ export function getResend(): Resend {
   return _resend;
 }
 
-export const FROM_EMAIL = `featurevote <notifications@featurevote.bootstrapquant.com>`;
+export const FROM_EMAIL = `FeatureVote <alerts@bootstrapquant.com>`;

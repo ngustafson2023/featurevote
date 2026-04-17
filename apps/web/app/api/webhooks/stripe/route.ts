@@ -1,7 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getStripe } from '@/lib/stripe'
 import { createServiceClient } from '@/lib/supabase/server'
+import { Resend } from 'resend'
+import { render } from '@react-email/render'
+import ProUpgradeEmail from '@/lib/emails/pro-upgrade'
 import Stripe from 'stripe'
+
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY)
+}
 
 export async function POST(request: NextRequest) {
   const body = await request.text()
@@ -38,6 +45,33 @@ export async function POST(request: NextRequest) {
         .from('profiles')
         .update({ plan, updated_at: new Date().toISOString() })
         .eq('stripe_customer_id', customerId)
+
+      if (plan === 'pro') {
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('email, pro_email_sent')
+          .eq('stripe_customer_id', customerId)
+          .single()
+
+        if (profile?.email && !profile.pro_email_sent) {
+          await supabase
+            .from('profiles')
+            .update({ pro_email_sent: true })
+            .eq('stripe_customer_id', customerId)
+
+          try {
+            const html = await render(ProUpgradeEmail())
+            await getResend().emails.send({
+              from: 'FeatureVote <alerts@bootstrapquant.com>',
+              to: profile.email,
+              subject: "You're now on FeatureVote Pro 🎉",
+              html,
+            })
+          } catch (e) {
+            console.error('Pro upgrade email failed:', e)
+          }
+        }
+      }
       break
     }
 

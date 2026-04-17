@@ -10,12 +10,7 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://featurevote.bootstra
 
 export async function sendWelcomeEmail(to: string) {
   try {
-    const html = await render(
-      WelcomeEmail({
-        appName: APP_NAME,
-        dashboardUrl: `${APP_URL}/dashboard`,
-      })
-    );
+    const html = await render(WelcomeEmail());
     await getResend().emails.send({
       from: FROM_EMAIL,
       to,
