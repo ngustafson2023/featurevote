@@ -28,6 +28,16 @@ export default function BillingPage() {
   const reason = searchParams.get('reason')
   const [loading, setLoading] = useState(false)
 
+  async function handleUpgrade() {
+    setLoading(true)
+    const res = await fetch('/api/stripe/checkout', { method: 'POST' })
+    if (res.ok) {
+      const { url } = await res.json()
+      window.location.href = url
+    }
+    setLoading(false)
+  }
+
   async function handlePortal() {
     setLoading(true)
     const res = await fetch('/api/stripe/portal', { method: 'POST' })
@@ -86,7 +96,7 @@ export default function BillingPage() {
                 </li>
               ))}
             </ul>
-            <Button className="w-full" onClick={handlePortal} disabled={loading}>
+            <Button className="w-full" onClick={handleUpgrade} disabled={loading}>
               {loading ? 'Loading...' : 'Upgrade to Pro'}
             </Button>
           </CardContent>
